@@ -1,0 +1,5 @@
+.env
+.pytest_cache
+.idea
+analytics-master
+analytics-console-app

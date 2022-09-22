@@ -1,5 +1,7 @@
 .env
 .pytest_cache
 .idea
+API/tests/__pycache__
+__pycache__
 analytics-master
 analytics-console-app

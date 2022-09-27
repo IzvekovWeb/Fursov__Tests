@@ -1,0 +1,165 @@
+{
+  "SPREADSHEET_ID": {
+    "id": "00000000000000000000000000000000000000000000",
+    "title": "Wildberries",
+    "sheets": {
+      "day": {
+        "id": 0,
+        "title": "День",
+        "title_db": "Ежедневный отчет"
+      },
+      "week": {
+        "id": 0,
+        "title": "Неделя",
+        "title_db": "Ежедневный отчет за неделю"
+      },
+      "month": {
+        "id": 0,
+        "title": "Месяц",
+        "title_db": "Ежедневный отчет за месяц"
+      },
+      "plan": {
+        "id": 0,
+        "title": "План",
+        "title_db": "План"
+      },
+      "dynamic_count": {
+        "id": 0,
+        "title": "Динамика (шт)",
+        "title_db": "Динамика заказов поартикульно"
+      },
+      "dynamic_rub": {
+        "id": 0,
+        "title": "Динамика (руб)",
+        "title_db": "Динамика заказов поартикульно"
+      },
+      "orders_all_categories": {
+        "id": 0,
+        "title": "Заказы (все категории)",
+        "title_db": "Динамика заказов по всем категориям"
+      },
+      "orders_all": {
+        "id": 0,
+        "title": "Заказы (все)",
+        "title_db": "Динамика заказов по выбранным категориям"
+      },
+      "remains": {
+        "id": 0,
+        "title": "Остатки",
+        "title_db": "Отчет по остаткам на складах ВБ"
+      },
+      "region_remains": {
+        "id": 0,
+        "title": "Остатки Регионы",
+        "title_db": "Отчет по региональным остаткам"
+      },
+      "top500": {
+        "id": 0,
+        "title": "Топ-500",
+        "title_db": "Категорийная динамика заказов по выбранным sku"
+      }
+    }
+  },
+  "SPREADSHEET_ID_SECOND": {
+    "id": "00000000000000000000000000000000000000000000",
+    "title": "Wildberries 2",
+    "sheets": {
+      "feedbacks": {
+        "id": 0,
+        "title": "Отзывы",
+        "title_db": "Отчет по отзывам"
+      },
+      "dispatch": {
+        "id": 0,
+        "title": "Отгрузка",
+        "title_db": "Отчет по отгрузке"
+      },
+      "dynamic_categories": {
+        "id": 0,
+        "title": "Динамика (категории)",
+        "title_db": "Ежечасная динамика заказов по категориям"
+      },
+      "profit": {
+        "id": 0,
+        "title": "ОП подробная",
+        "title_db": "Ежедневный отчет по ОП"
+      },
+      "op_ev_day": {
+        "id": 0,
+        "title": "ОП ежедн",
+        "title_db": "Ежедневный отчет по ОП, сводная"
+      },
+      "profitability": {
+        "id": 0,
+        "title": "Рентабельность (титул)",
+        "title_db": "Отчет по рентабельности"
+      },
+      "profitability_color": {
+        "id": 0,
+        "title": "Рентабельность (цвет)",
+        "title_db": "Отчет по рентабельности по sku"
+      },
+      "profitability_object": {
+        "id": 0,
+        "title": "Рентабельность (предмет)",
+        "title_db": "Отчет по рентабельности по предметам"
+      },
+      "percent_color": {
+        "id": 0,
+        "title": "Выкуп (цвет)",
+        "title_db": "Процент выкупа"
+      },
+      "percent_size": {
+        "id": 0,
+        "title": "Выкуп (размер)",
+        "title_db": "Процент выкупа по размеру"
+      },
+      "percent_article": {
+        "id": 0,
+        "title": "Выкуп (артикул)",
+        "title_db": "Процент выкупа по артикулу"
+      },
+      "percent_subject": {
+        "id": 0,
+        "title": "Выкуп (предмет)",
+        "title_db": "Процент выкупа по предмету"
+      },
+      "abc_report": {
+        "id": 0,
+        "title": "ABC",
+        "title_db": "ABC-анализ"
+      },
+      "abc_article_report": {
+        "id": 0,
+        "title": "ABC (арт)",
+        "title_db": "ABC-анализ по артикулам"
+      },
+      "abc_subject_report": {
+        "id": 0,
+        "title": "ABC (предмет)",
+        "title_db": "ABC-анализ по предметам"
+      },
+      "liquidity": {
+        "id": 0,
+        "title": "Ликвидность",
+        "title_db": "Фирменный отчет MarketData"
+      }
+    }
+  },
+  "SPREADSHEET_ID_LOGISTICS": {
+    "id": "00000000000000000000000000000000000000000000",
+    "title": "Wildberries Log PC",
+    "sheets": {
+      "logistics": {
+        "id": 0,
+        "title": "Логистика",
+        "title_db": "Логистика"
+      },
+      "prime_cost": {
+        "id": 0,
+        "title": "Себестоимость",
+        "title_db": "Себестоимость"
+      }
+    }
+  }
+}

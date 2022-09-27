@@ -1,0 +1,2 @@
+class WildberriesSpreadSheet:
+    pass

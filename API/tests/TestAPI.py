@@ -139,7 +139,7 @@ class TestLoginAPI:
             json_ = response.json()
         except JSONDecodeError:
             print('Response is not json')
-            return False
+            json_ = {"result": False}
 
         schema_analytics_put = {
             "type": "object",

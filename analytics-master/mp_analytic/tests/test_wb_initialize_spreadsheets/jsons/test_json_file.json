@@ -1,0 +1,6 @@
+{
+  "some_key": "str",
+  "dict_key": {
+    "int_value": 123
+  }
+}

@@ -1,0 +1,2 @@
+class NotCorrectInputValuesException(Exception):
+    pass

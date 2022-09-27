@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  frontend:
+    image: frontend_image
+    container_name: frontend
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - type: bind
+        source: /etc/cert
+        target: /etc/cert
+
+  backend:
+    image: backend_image
+    container_name: backend
+    restart: always
+    build:
+      context: ./mp_analytic
+      dockerfile: Dockerfile
+    env_file:
+      - ./mp_analytic/.env.dev
+    command: gunicorn mp_analytic.wsgi --bind 0.0.0.0:8000 --workers 17 --timeout 900
+    ports:
+      - '8000:8000'
+    depends_on:
+      - frontend

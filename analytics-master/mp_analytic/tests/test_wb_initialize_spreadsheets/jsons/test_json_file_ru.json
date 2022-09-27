@@ -1,0 +1,6 @@
+{
+  "some_key": "русский",
+  "dict_key": {
+    "int_value": 123
+  }
+}

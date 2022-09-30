@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-20@hm6@_dd=o^r!&9%19fbwzs-7v%z&o5tu9=+(3%^ooi+3+k+"
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'configurator',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
+
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -114,6 +116,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':
         (
             'rest_framework_simplejwt.authentication.JWTAuthentication',
+            # 'rest_framework.authentication.SessionAuthentication'
         ),
 }
 
@@ -163,3 +166,19 @@ EMAIL_HOST = "smpt.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Токен в формате: 'Bearer <JWT>'": {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'JSON_EDITOR': True,
+    # 'APIS_SORTER': 'alpha',
+    'DOC_EXPANSION': 'list',
+    'SHOW_REQUEST_HEADERS': True,
+    'SUPPORTED_SUBMIT_METHODS': ['get', 'post', 'put']
+}

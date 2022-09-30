@@ -20,6 +20,9 @@ from .utils import get_object_plan, put_plan, get_queryset_dynamic_report_dashbo
     get_object_dynamic_report_dashboard, collect_self_sell_data
 
 
+from drf_yasg.utils import swagger_auto_schema
+
+
 class UserRegisterAPIView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -68,6 +71,7 @@ class ConfirmCodeAPIView(APIView):
 class CheckWBAuthTokenAPIView(generics.RetrieveAPIView):
     permission_classes = (IsAuthenticated, )
 
+    @swagger_auto_schema(tags=['Проверка токена WB'])
     def get(self, request, *args, **kwargs):
         user = self.request.user
         if user.token_v3:
@@ -76,6 +80,7 @@ class CheckWBAuthTokenAPIView(generics.RetrieveAPIView):
             return Response(status=status.HTTP_200_OK, data=False)
 
 
+# @swagger_auto_schema(tags=['Изменить токен WB'])
 class TokensAPIView(generics.ListAPIView,
                     generics.UpdateAPIView):
     serializer_class = TokensSerializer
@@ -90,6 +95,7 @@ class TokensAPIView(generics.ListAPIView,
                 instances.append(user_cred)
         return instances
 
+    @swagger_auto_schema(tags=['Изменить токен WB'])
     def put(self, request, *args, **kwargs):
         user_creds = self.get_queryset()
         serializer = TokensSerializer(data=request.data)
@@ -145,6 +151,9 @@ class SpreadsheetCreateAPIView(generics.ListCreateAPIView):
         serializer = self.get_serializer()
         serializer.create(kwargs)
         return Response(status=status.HTTP_201_CREATED)
+
+    def get_queryset(self):
+        return
 
 
 class SheetAPIView(generics.ListAPIView):
@@ -215,6 +224,7 @@ class SheetUpdateAPIView(generics.RetrieveUpdateAPIView):
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+    @swagger_auto_schema(tags=['Обновить отчёт'], operation_summary='Обновить отчёт <id>')
     def put(self, request, *args, **kwargs):
         model_object = self.get_object()
         serializer: SheetUpdateSerializer = self.get_serializer(model_object, data=request.data)
@@ -228,6 +238,9 @@ class SheetUpdateAPIView(generics.RetrieveUpdateAPIView):
             except Exception as err:
                 print(err)
                 return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    def get_queryset(self):
+        return
 
 
 class DashboardTopOrdersTableAPIView(generics.ListAPIView):
@@ -254,7 +267,7 @@ class TopBrandsTableAPIView(generics.ListAPIView):
         return get_queryset_dynamic_report_dashboard(TopBrandsTable, self.request)
 
 
-class BaseStatisticCardAPIView(generics.RetrieveAPIView):
+class BaseStatisticCardAPIView(APIView):
     serializer_class = DashboardBaseStatisticCardSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -460,6 +473,7 @@ class WeekPlanUpdateAPIView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return get_object_plan(self.request)
 
+    @swagger_auto_schema(tags=['План на неделю'], operation_summary='Обновить план на неделю')
     def put(self, request, **kwargs):
         return put_plan(self.get_object, Response, request, status, 1)
 
@@ -470,6 +484,7 @@ class MonthPlanUpdateAPIView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return get_object_plan(self.request)
 
+    @swagger_auto_schema(tags=['План на месяц'], operation_summary='Обновить план на месяц')
     def put(self, request, **kwargs):
         return put_plan(self.get_object, Response, request, status, 4)
 
@@ -479,10 +494,12 @@ class SelfSellAPIView(generics.ListAPIView,
     serializer_class = SelfSellSerializer
     permission_classes = (IsAuthenticated, )
 
+    @swagger_auto_schema(tags=['Самовыкупы'], operation_summary='Записать данные по самовыкупам')
     def get_queryset(self):
         user = self.request.user
         return SelfSell.objects.filter(user_id=user.pk)
 
+    @swagger_auto_schema(tags=['Самовыкупы'], operation_summary='Записать данные по самовыкупам')
     def post(self, request, *args, **kwargs):
         request.data["user_id"] = request.user.pk
         serializer = self.get_serializer(data=request.data)
@@ -498,7 +515,9 @@ class SelfSellAPIView(generics.ListAPIView,
 
 class SelfSellStatAPIView(generics.RetrieveAPIView):
     permission_classes = (IsAuthenticated, )
+    serializer_class = None
 
+    @swagger_auto_schema(tags=['Самовыкупы'], operation_summary='Базовая статистика по самовыкупу')
     def get(self, request, *args, **kwargs):
         user = self.request.user
         queryset = SelfSell.objects.filter(user_id=user.pk)
